@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9444E3CA-883B-4A95-99E5-4CD0BF611DE9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>R2S.Domain</RootNamespace>
+    <AssemblyName>R2S.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\answer.cs" />
+    <Compile Include="Entities\Candidate.cs" />
+    <Compile Include="Entities\candidateanswer.cs" />
+    <Compile Include="Entities\candidatefield.cs" />
+    <Compile Include="Entities\candidatefieldvalue.cs" />
+    <Compile Include="Entities\candidatejob.cs" />
+    <Compile Include="Entities\candidatequizmodel.cs" />
+    <Compile Include="Entities\candidateskill.cs" />
+    <Compile Include="Entities\category.cs" />
+    <Compile Include="Entities\certification.cs" />
+    <Compile Include="Entities\ChiefHumanRessource.cs" />
+    <Compile Include="Entities\education.cs" />
+    <Compile Include="Entities\emailmodel.cs" />
+    <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\experience.cs" />
+    <Compile Include="Entities\interview.cs" />
+    <Compile Include="Entities\job.cs" />
+    <Compile Include="Entities\jobfield.cs" />
+    <Compile Include="Entities\jobfieldvalue.cs" />
+    <Compile Include="Entities\notification.cs" />
+    <Compile Include="Entities\question.cs" />
+    <Compile Include="Entities\quizmodel.cs" />
+    <Compile Include="Entities\RecruitementManager.cs" />
+    <Compile Include="Entities\referhash.cs" />
+    <Compile Include="Entities\reward.cs" />
+    <Compile Include="Entities\skill.cs" />
+    <Compile Include="Entities\user.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
