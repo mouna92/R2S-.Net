@@ -11,9 +11,9 @@ namespace R2S.Data.Models.Mapping
             this.HasKey(t => t.cin);
 
             // Properties
-            this.Property(t => t.user_role)
+            /*this.Property(t => t.user_role)
                 .IsRequired()
-                .HasMaxLength(31);
+                .HasMaxLength(31);*/
 
             this.Property(t => t.city)
                 .HasMaxLength(255);
@@ -47,7 +47,6 @@ namespace R2S.Data.Models.Mapping
 
             // Table & Column Mappings
             this.ToTable("users", "r2s");
-            this.Property(t => t.user_role).HasColumnName("user_role");
             this.Property(t => t.cin).HasColumnName("cin");
             this.Property(t => t.active).HasColumnName("active");
             this.Property(t => t.city).HasColumnName("city");
@@ -66,22 +65,22 @@ namespace R2S.Data.Models.Mapping
             //Inheritance
             Map<Candidate>(c =>
             {
-                c.Requires("IsUser").HasValue(0);
+                c.Requires("user_role").HasValue("Candidate");
 
             });
             Map<Employee>(c =>
             {
-                c.Requires("IsUser").HasValue(1);
+                c.Requires("user_role").HasValue("Employee");
 
             });
             Map<RecruitementManager>(c =>
             {
-                c.Requires("IsUser").HasValue(2);
+                c.Requires("user_role").HasValue("RecruitmentManager");
 
             });
             Map<ChiefHumanRessource>(c =>
             {
-                c.Requires("IsUser").HasValue(3);
+                c.Requires("user_role").HasValue("ChiefHumanRessource");
 
             });
 

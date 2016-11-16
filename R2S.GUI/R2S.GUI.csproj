@@ -197,7 +197,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -253,6 +255,14 @@
     <Content Include="Scripts\Materilize\plugins\chartist-js\chartist-script.js" />
     <Content Include="Scripts\Materilize\plugins\chartist-js\chartist.min.css" />
     <Content Include="Scripts\Materilize\plugins\chartist-js\chartist.min.js" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\css\jquery.dataTables.min.css" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\data-tables-script.js" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\images\sort_asc.png" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\images\sort_both.png" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\images\sort_desc.png" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\js\jquery.dataTables.min.js" />
     <Content Include="Scripts\Materilize\plugins\perfect-scrollbar\perfect-scrollbar.css" />
     <Content Include="Scripts\Materilize\plugins\perfect-scrollbar\perfect-scrollbar.min.js" />
     <Content Include="Scripts\Materilize\prism.js" />
@@ -297,6 +307,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\jobs\Create.cshtml" />
+    <Content Include="Views\jobs\Delete.cshtml" />
+    <Content Include="Views\jobs\Details.cshtml" />
+    <Content Include="Views\jobs\Edit.cshtml" />
+    <Content Include="Views\jobs\Index.cshtml" />
+    <Content Include="Views\users\Create.cshtml" />
+    <Content Include="Views\users\Delete.cshtml" />
+    <Content Include="Views\users\Details.cshtml" />
+    <Content Include="Views\users\Edit.cshtml" />
+    <Content Include="Views\users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -321,6 +341,10 @@
     <ProjectReference Include="..\R2S.Service\R2S.Service.csproj">
       <Project>{45f62d21-60fc-4158-a4ad-d85a3a78c895}</Project>
       <Name>R2S.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service.pattern\Service.pattern.csproj">
+      <Project>{8B35BDA6-AFDD-4538-A180-01F007F1F22A}</Project>
+      <Name>Service.pattern</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
