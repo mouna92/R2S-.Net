@@ -23,14 +23,12 @@ namespace R2S.Console
              System.Console.WriteLine("success");
              System.Console.ReadLine();*/
             System.Console.WriteLine("Start: ");
-            IEmailModelService service = new EmailModelService();
-            emailmodel e = new emailmodel()
-            {content = "modelbyservice",
-            name="model5",
-            };
-            service.Add(e);
-            service.commit();
 
+            IJobService service = new JobService();
+            
+
+            System.Console.WriteLine(service.GetMany().ToList());
+            System.Console.ReadLine();
             System.Console.WriteLine("success");
 
         }

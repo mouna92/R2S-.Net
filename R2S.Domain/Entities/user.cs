@@ -22,7 +22,6 @@ namespace R2S.Data.Models
             this.users1 = new List<user>();
         }
 
-        public string user_role { get; set; }
         public long cin { get; set; }
         public Nullable<bool> active { get; set; }
         public string city { get; set; }
