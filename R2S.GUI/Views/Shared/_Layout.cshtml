@@ -13,7 +13,7 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
     <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-    <title>Page Blank | Materialize - Material Design Admin Template</title>
+    <title>@ViewBag.Title | Referral Recruitment Software</title>
 
     <!-- CORE CSS-->
 
@@ -104,10 +104,13 @@
                         </div>
                     </li>
                     <li class="bold">
-                        <a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
+                        <a href="@Url.Action("Index", "Users")" class="waves-effect waves-cyan"><i class='mdi-action-dashboard'></i> Dashboard</a>
                     </li>
                     <li class="bold">
-                        <a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Mailbox <span class="new badge">4</span></a>
+                        <a href="@Url.Action("Index", "Users")" class="waves-effect waves-cyan"><i class='mdi-action-account-child'></i> Users</a>
+                    </li>
+                    <li class="bold">
+                        <a href="@Url.Action("Index", "Jobs")" class="waves-effect waves-cyan"><i class='mdi-action-account-child'></i> Jobs</a>
                     </li>
                     <li class="bold">
                         <a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
@@ -301,7 +304,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col s12 m12 l12">
-                                <h5 class="breadcrumbs-title">Blank Page</h5>
+                                <h5 class="breadcrumbs-title">@ViewBag.Title</h5>
                                 <ol class="breadcrumb">
                                     <li><a href="index.html">Dashboard</a></li>
                                     <li><a href="#">Pages</a></li>
