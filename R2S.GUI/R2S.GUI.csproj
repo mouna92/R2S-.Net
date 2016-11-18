@@ -199,6 +199,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,8 +215,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font\material-design-icons\Material-Design-Icons.svg" />
     <Content Include="Content\Images\avatar.jpg" />
+    <Content Include="Content\Images\delete.png" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\sprite.png" />
     <Content Include="Content\Images\user-bg.jpg" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\Materilize\materialize.css" />
     <Content Include="Content\Materilize\page-center.css" />
     <Content Include="Content\Materilize\prism.css" />
@@ -241,9 +245,11 @@
     <Content Include="Content\font\material-design-icons\Material-Design-Icons.ttf" />
     <Content Include="Content\font\material-design-icons\Material-Design-Icons.woff" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
+    <Content Include="Scripts\handlebars.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -317,6 +323,7 @@
     <Content Include="Views\users\Details.cshtml" />
     <Content Include="Views\users\Edit.cshtml" />
     <Content Include="Views\users\Index.cshtml" />
+    <Content Include="Views\Settings\JobForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
