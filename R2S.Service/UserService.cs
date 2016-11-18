@@ -1,8 +1,8 @@
 ﻿using R2S.Data.Models;
 using Service.pattern;
 using R2S.Data.Infrastructures;
-using R2S.Data.Models;
-using Service.pattern;
+
+
 namespace R2S.Service
 
 {
