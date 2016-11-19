@@ -9,6 +9,7 @@ namespace R2S.GUI
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
         }
     }
 }
