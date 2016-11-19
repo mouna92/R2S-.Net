@@ -15,5 +15,10 @@ namespace R2S.Service
         {
 
         }
+
+        public user GetById(long id)
+        {
+            return dbfactory.dbcontext.users.Find(id);
+        }
     }
 }

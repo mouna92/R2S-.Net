@@ -192,7 +192,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -216,6 +215,7 @@
     <Content Include="Content\font\material-design-icons\Material-Design-Icons.svg" />
     <Content Include="Content\Images\avatar.jpg" />
     <Content Include="Content\Images\delete.png" />
+    <Content Include="Content\Images\login-logo.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Content\Images\user-bg.jpg" />

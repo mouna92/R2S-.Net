@@ -3,6 +3,25 @@ using System.ComponentModel.DataAnnotations;
 
 namespace R2S.GUI.Models
 {
+
+    public class BaseViewModel
+    {
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public string Role { get; private set; }
+
+        public User User
+        {
+            set
+            {
+                FirstName = value.firstname;
+                LastName = value.lastname;
+                Role = value.Role;
+
+            }
+        }
+    }
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -50,7 +69,6 @@ namespace R2S.GUI.Models
     {
         [Required]
         [Display(Name = "Courrier électronique")]
-        [EmailAddress]
         public string Email { get; set; }
 
         [Required]

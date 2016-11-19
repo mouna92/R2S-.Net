@@ -1451,3 +1451,11 @@ footer.page-footer {
       font-size: 0.8rem;
   }
 }
+
+.profile-name {
+    display: inline-block;
+    text-overflow: initial;
+    width: 97px;
+    white-space: nowrap;
+    overflow: hidden;
+}
