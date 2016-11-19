@@ -18,6 +18,28 @@ namespace R2S.Service
         {
 
         }
+        public int StatisticJobClosed()
+        {
+
+            var results = from g in dbfactory.dbcontext.jobs
+
+                where g.status == 0 
+            
+                          select g;
+            return results.Count();
+        }
+        public int StatisticJobOpen()
+        {
+
+            var results = from g in dbfactory.dbcontext.jobs
+
+                          where g.status == 1
+
+                          select g;
+            return results.Count();
+        }
+
+
 
     }
 }

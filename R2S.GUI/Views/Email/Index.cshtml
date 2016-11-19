@@ -4,11 +4,29 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Email Models</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            
+            <div id="right-search" class="row">
+                <form class="col s12">
+                    <div class="input-field">
+                        <i  class="mdi-action-search prefix"></i>
+                         @Html.TextBox("search")
+                       
+                        
+                    </div>
+                </form>
+            </div>
+        </tr>
+    </table>
+}
 <table class="table">
     <tr>
         <th>

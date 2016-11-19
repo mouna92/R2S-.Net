@@ -4,14 +4,16 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using R2S.Data.Models;
+using R2S.GUI.Models;
 using R2S.Service;
 
 namespace R2S.GUI.Controllers
 {
-    public class JobsController : Controller
+    public class JobController : BaseController
     {
         private IJobService service = new JobService();
 
@@ -126,5 +128,40 @@ namespace R2S.GUI.Controllers
             }
             base.Dispose(disposing);
         }
+        public ActionResult JobStatus()
+        {
+            int st1 = service.StatisticJobOpen();
+            int st2 = service.StatisticJobClosed();
+
+            List<JobModel> l = new List<JobModel>();
+
+
+
+
+            {
+                l.Add(new JobModel
+                {
+                    x1=st1,
+                    x2=st2,
+
+
+                });
+            }
+
+            return View(l);
+        }
+        public async Task<ActionResult> ViewJob()
+        {
+            ViewBag.Message = "Your products page.";
+            //job jo = new job();
+            string urlAction = String.Format("/tn.esprit.R2S-web/resources/api/job/statistic/{0}", "OPEN");
+            string urlAction1 = String.Format("/tn.esprit.R2S-web/resources/api/job/statistic/{0}", "CLOSED");
+            int joi = await GetWSObject<int>(urlAction);
+            int joi1 = await GetWSObject<int>(urlAction1);
+            ViewBag.res = joi;
+            ViewBag.res2 = joi1;
+            return View();
+        }
+
     }
 }

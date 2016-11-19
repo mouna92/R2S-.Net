@@ -10,5 +10,7 @@ namespace R2S.Service
 {
     public interface IJobService : IServiceGenerique<job>
     {
+      int  StatisticJobOpen();
+         int   StatisticJobClosed();
     }
 }

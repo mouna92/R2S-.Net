@@ -106,7 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Fakes Include="Fakes\EntityFramework.SqlServer.fakes" />
+    <Fakes Include="Fakes\EntityFramework.SqlServer.fakes">
+      <SubType>Designer</SubType>
+    </Fakes>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

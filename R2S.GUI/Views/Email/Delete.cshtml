@@ -1,23 +1,22 @@
-﻿@model R2S.Data.Models.job
+﻿@model R2S.Data.Models.emailmodel
 
 @{
     ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Email Models</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>job</h4>
+    <h4>Delete Email</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.description)
+            @Html.DisplayNameFor(model => model.content)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.description)
+            @Html.DisplayFor(model => model.content)
         </dd>
 
         <dt>
@@ -29,19 +28,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.salary)
+            @Html.DisplayNameFor(model => model.recruitmentManager_cin)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.salary)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.status)
+            @Html.DisplayFor(model => model.recruitmentManager_cin)
         </dd>
 
     </dl>

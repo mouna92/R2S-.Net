@@ -32,5 +32,10 @@ namespace R2S.Data.Models
         public virtual ICollection<jobfieldvalue> jobfieldvalues { get; set; }
         public virtual ICollection<quizmodel> quizmodels { get; set; }
         public virtual ICollection<skill> skills { get; set; }
+
+        public static implicit operator int(job v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
