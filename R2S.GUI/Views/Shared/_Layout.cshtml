@@ -24,6 +24,7 @@
     <link href="~/Content/Materilize/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="~/Scripts/Materilize/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="~/Scripts/Materilize/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    @RenderSection("Styles", required: false)
 </head>
 <body>
     <!-- Start Page Loading -->
@@ -313,10 +314,6 @@
                 <!--breadcrumbs end-->
                 <!--start container-->
                 <div class="container">
-                    <div class="section">
-                        <p class="caption">A Simple Blank Page to use it for your custome design and elements.</p>
-                        <div class="divider"></div>
-                    </div>
                     @RenderBody()
                 </div>
                 <!--end container-->
@@ -505,5 +502,9 @@
 
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="~/Scripts/Materilize/plugins.js"></script>
+    
+    @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>
