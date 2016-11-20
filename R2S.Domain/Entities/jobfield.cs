@@ -14,5 +14,9 @@ namespace R2S.Data.Models
         public string fieldName { get; set; }
         public Nullable<int> fieldType { get; set; }
         public virtual ICollection<jobfieldvalue> jobfieldvalues { get; set; }
+
+        public static readonly int TextField = 0;
+        public static readonly int Radiobox = 1;
+        public static readonly int Checkbox = 2;
     }
 }

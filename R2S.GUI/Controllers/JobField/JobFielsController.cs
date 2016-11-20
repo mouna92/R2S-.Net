@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace R2S.GUI.Controllers.JobField
 {
-    public class JobFielsController : Controller
+    public class JobFielsController : BaseController
     {
         // GET: JobFiels
         public ActionResult Index()

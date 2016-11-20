@@ -5,10 +5,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--================================================================================
-    Item Name: Materialize - Material Design Admin Template
-    Version: 1.0
-    Author: GeeksLabs
-    Author URL: http://www.themeforest.net/user/geekslabs
+Item Name: Materialize - Material Design Admin Template
+Version: 1.0
+Author: GeeksLabs
+Author URL: http://www.themeforest.net/user/geekslabs
 ================================================================================ -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -32,12 +32,6 @@
 </head>
 <body>
 
-<!-- Start Page Loading -->
-<div id="loader-wrapper">
-    <div id="loader"></div>
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-</div>
 <!-- End Page Loading -->
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START HEADER -->
@@ -46,23 +40,34 @@
     <div class="navbar-fixed">
         <nav class="cyan">
             <div class="nav-wrapper">
-                <h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="~/Content/Images/logo.png" alt="r2s logo"></a> <span class="logo-text">Materialize</span></h1>
+                <h1 class="logo-wrapper">
+                    <a href="index.html" class="brand-logo darken-1">
+                        <img src="~/Content/Images/logo.png" alt="r2s logo">
+                    </a> <span class="logo-text">Materialize</span></h1>
                 <ul class="right hide-on-med-and-down">
                     <li class="search-out">
                         <input type="text" class="search-out-text">
                     </li>
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light show-search"><i class="mdi-action-search"></i></a>
+                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light show-search">
+                            <i class="mdi-action-search"></i>
+                        </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
+                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen">
+                            <i class="mdi-action-settings-overscan"></i>
+                        </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light"><i class="mdi-social-notifications"></i></a>
+                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light">
+                            <i class="mdi-social-notifications"></i>
+                        </a>
                     </li>
                     <!-- Dropdown Trigger -->
                     <li>
-                        <a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="mdi-communication-chat"></i></a>
+                        <a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse">
+                            <i class="mdi-communication-chat"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -103,7 +108,9 @@
                     <a href="@Url.Action("LogOff", "Account")"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
                 </li>
             </ul>
-            <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"> <span class="profile-name">@Model.FirstName @Model.LastName</span> <i class="mdi-navigation-arrow-drop-down right margin" style="margin: 0"></i></a>
+            <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">
+                <span class="profile-name">@Model.FirstName @Model.LastName</span> <i class="mdi-navigation-arrow-drop-down right margin" style="margin: 0"></i>
+            </a>
             <p class="user-roal">@Model.Role</p>
         </div>
     </div>
@@ -115,7 +122,7 @@
     <a href="@Url.Action("Index", "Users")" class="waves-effect waves-cyan"><i class='mdi-action-account-child'></i> Users</a>
 </li>
 <li class="bold">
-    <a href="@Url.Action("Index", "Jobs")" class="waves-effect waves-cyan"><i class='mdi-action-account-child'></i> Jobs</a>
+    <a href="@Url.Action("Index", "Jobs")" class="waves-effect waves-cyan"><i class='mdi-action-markunread-mailbox'></i> Jobs</a>
 </li>
 <li class="bold">
     <a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
@@ -272,9 +279,11 @@
     </ul>
 </li>
 <li class="li-hover">
-    <div class="divider"></div></li>
+    <div class="divider"></div>
+</li>
 <li class="li-hover">
-    <p class="ultra-small margin more-text">MORE</p></li>
+    <p class="ultra-small margin more-text">MORE</p>
+</li>
 <li>
     <a href="css-grid.html"><i class="mdi-image-grid-on"></i> Grid</a>
 </li>
@@ -288,9 +297,11 @@
     <a href="changelogs.html"><i class="mdi-action-swap-vert-circle"></i> Changelogs</a>
 </li>
 <li class="li-hover">
-    <div class="divider"></div></li>
+    <div class="divider"></div>
+</li>
 <li class="li-hover">
-    <p class="ultra-small margin more-text">Daily Sales</p></li>
+    <p class="ultra-small margin more-text">Daily Sales</p>
+</li>
 <li class="li-hover">
     <div class="row">
         <div class="col s12 m12 l12">
@@ -301,7 +312,9 @@
     </div>
 </li>
 </ul>
-<a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"><i class="mdi-navigation-menu"></i></a>
+<a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2">
+    <i class="mdi-navigation-menu"></i>
+</a>
 </aside>
 <!-- END LEFT SIDEBAR NAV-->
 <!-- //////////////////////////////////////////////////////////////////////////// -->
@@ -310,21 +323,23 @@
 
     <!--breadcrumbs start-->
     @this.RenderSection("Breadcrumb", @<div id="breadcrumbs-wrapper" class=" grey lighten-3">
-        <div class="container">
-            <div class="row">
-                <div class="col s12 m12 l12">
-                    <h5 class="breadcrumbs-title">@ViewBag.Title</h5>
-                    <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-    )
+                                          <div class="container">
+                                              <div class="row">
+                                                  <div class="col s12 m12 l12">
+                                                      <h5 class="breadcrumbs-title">@ViewBag.Title</h5>
+                                                      <ol class="breadcrumb">
+                                                          <li>
+                                                              <a href="index.html">Dashboard</a>
+                                                          </li>
 
-    
+                                                      </ol>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+        )
+
+
     <!--breadcrumbs end-->
     <!--start container-->
     <div class="container">
@@ -338,7 +353,9 @@
 <aside id="right-sidebar-nav">
     <ul id="chat-out" class="side-nav rightside-navigation">
         <li class="li-hover">
-            <a href="#" data-activates="chat-out" class="chat-close-collapse right"><i class="mdi-navigation-close"></i></a>
+            <a href="#" data-activates="chat-out" class="chat-close-collapse right">
+                <i class="mdi-navigation-close"></i>
+            </a>
             <div id="right-search" class="row">
                 <form class="col s12">
                     <div class="input-field">
@@ -352,7 +369,8 @@
         <li class="li-hover">
             <ul class="chat-collapsible" data-collapsible="expandable">
                 <li>
-                    <div class="collapsible-header teal white-text active"><i class="mdi-social-whatshot"></i>Recent Activity
+                    <div class="collapsible-header teal white-text active">
+                        <i class="mdi-social-whatshot"></i>Recent Activity
                     </div>
                     <div class="collapsible-body recent-activity">
                         <div class="recent-activity-list chat-out-list row">
@@ -403,7 +421,8 @@
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header light-blue white-text active"><i class="mdi-editor-attach-money"></i>Sales Repoart
+                    <div class="collapsible-header light-blue white-text active">
+                        <i class="mdi-editor-attach-money"></i>Sales Repoart
                     </div>
                     <div class="collapsible-body sales-repoart">
                         <div class="sales-repoart-list  chat-out-list row">
@@ -433,7 +452,8 @@
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header red white-text"><i class="mdi-action-stars"></i>Favorite Associates
+                    <div class="collapsible-header red white-text">
+                        <i class="mdi-action-stars"></i>Favorite Associates
                     </div>
                     <div class="collapsible-body favorite-associates">
                         <div class="favorite-associate-list chat-out-list row">
