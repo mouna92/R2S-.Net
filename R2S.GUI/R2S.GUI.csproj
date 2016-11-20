@@ -365,16 +365,15 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Settings\JobForm.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Checkbox.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Checkbox.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DatePicker.cshtml" />
     <Content Include="Views\FormCustomization\Job.cshtml" />
+    <Content Include="Views\FormCustomization\Candidate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\JobFiels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
