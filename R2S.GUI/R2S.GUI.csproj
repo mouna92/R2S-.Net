@@ -232,17 +232,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobField\JobFielsController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\LinkedInController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\SectionRenderHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\jobfieldRestModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\UsersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -344,9 +350,24 @@
     <Content Include="Views\LinkedIn\Callback.cshtml" />
     <Content Include="Views\LinkedIn\Index.cshtml" />
     <Content Include="Views\LinkedIn\SignIn.cshtml" />
+    <Content Include="Views\jobs\Create.cshtml" />
+    <Content Include="Views\jobs\Delete.cshtml" />
+    <Content Include="Views\jobs\Details.cshtml" />
+    <Content Include="Views\jobs\Edit.cshtml" />
+    <Content Include="Views\jobs\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Settings\JobForm.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Checkbox.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Checkbox.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DatePicker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\JobFiels\" />
   </ItemGroup>
   <ItemGroup>
@@ -369,6 +390,10 @@
     <ProjectReference Include="..\R2S.Service\R2S.Service.csproj">
       <Project>{45f62d21-60fc-4158-a4ad-d85a3a78c895}</Project>
       <Name>R2S.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service.pattern\Service.pattern.csproj">
+      <Project>{8b35bda6-afdd-4538-a180-01f007f1f22a}</Project>
+      <Name>Service.pattern</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

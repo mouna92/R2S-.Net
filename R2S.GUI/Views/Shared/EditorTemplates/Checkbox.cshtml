@@ -1,0 +1,4 @@
+﻿@model Boolean
+
+<input type="checkbox" name="@ViewData.TemplateInfo.HtmlFieldPrefix" id="@(ViewBag.Id)" @(Model == true ? "checked" : "") @(ViewBag.Disabled == true ? "disabled" : "")/>
+<label for="@(ViewBag.Id)">@(ViewBag.Label)</label>

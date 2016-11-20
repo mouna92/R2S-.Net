@@ -1,4 +1,4 @@
-﻿@model IEnumerable<R2S.Data.Models.user>
+﻿@model R2S.GUI.Models.UsersIndexViewModel
 
 @{
     ViewBag.Title = "Users";
@@ -10,62 +10,76 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table striped">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.FirstOrDefault().cin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.FirstOrDefault().firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.FirstOrDefault().lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.FirstOrDefault().username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.FirstOrDefault().birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.FirstOrDefault().email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.FirstOrDefault().tel)
+        </th>
         
         <th>
-            @Html.DisplayNameFor(model => model.active)
+            @Html.DisplayNameFor(model => model.Users.FirstOrDefault().country)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.city)
+            @Html.DisplayNameFor(model => model.Users.FirstOrDefault().city)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.country)
+            @Html.DisplayNameFor(model => model.Users.FirstOrDefault().state)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.state)
+            @Html.DisplayNameFor(model => model.Users.FirstOrDefault().street)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.street)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.birthday)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.firstname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lastname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.username)
+            @Html.DisplayNameFor(model => model.Users.FirstOrDefault().active)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Users) {
     <tr>
-        
         <td>
-            @Html.DisplayFor(modelItem => item.active)
+            @Html.DisplayFor(modelItem => item.cin)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.city)
+            @Html.DisplayFor(modelItem => item.firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.birthday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tel)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.state)
@@ -74,33 +88,18 @@
             @Html.DisplayFor(modelItem => item.street)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.birthday)
+            @Html.DisplayFor(modelItem => item.active, "Checkbox", new { Id = item.cin, Disabled = true })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.firstname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lastname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.username)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.cin }) |
-            @Html.ActionLink("Details", "Details", new { id=item.cin }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.cin })
+            <a href="@Url.Action("Details", "Users", new {id = item.cin})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Details" data-delay="10">
+                <i class='mdi-action-search'></i>
+            </a>
+            <a href="@Url.Action("Edit", "Users", new {id = item.cin})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Edit" data-delay="10">
+                <i class='mdi-image-edit'></i>
+            </a>
+            <a href="@Url.Action("Delete", "Users", new {id = item.cin})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Delete" data-delay="10">
+                <i class='mdi-action-delete'></i>
+            </a>
         </td>
     </tr>
 }

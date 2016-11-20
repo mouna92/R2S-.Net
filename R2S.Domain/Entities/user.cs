@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace R2S.Data.Models
 {
@@ -23,11 +24,12 @@ namespace R2S.Data.Models
         }
 
         public long cin { get; set; }
-        public Nullable<bool> active { get; set; }
+        public bool active { get; set; }
         public string city { get; set; }
         public string country { get; set; }
         public string state { get; set; }
         public string street { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d MMMMM, yyyy}")]
         public Nullable<System.DateTime> birthday { get; set; }
         public string email { get; set; }
         public string firstname { get; set; }
