@@ -1,4 +1,4 @@
-﻿@model IEnumerable<R2S.Data.Models.job>
+﻿@model JobViewModel
 
 @section Styles{
     <link href="~/Scripts/Materilize/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -18,40 +18,46 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.description)
+                @Html.DisplayNameFor(model => model.Jobs.FirstOrDefault().name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.name)
+                @Html.DisplayNameFor(model => model.Jobs.FirstOrDefault().description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.salary)
+                @Html.DisplayNameFor(model => model.Jobs.FirstOrDefault().salary)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.status)
+                @Html.DisplayNameFor(model => model.Jobs.FirstOrDefault().status)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Jobs)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.description)
+                    @Html.DisplayFor(modelItem => item.name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.name)
+                    @Html.DisplayFor(modelItem => item.description)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.salary)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.status)
+                    @Html.DisplayFor(modelItem => item.statusString)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    <a href="@Url.Action("Details", "Jobs", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Details" data-delay="10">
+                        <i class='mdi-action-search'></i>
+                    </a>
+                    <a href="@Url.Action("Edit", "Jobs", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Edit" data-delay="10">
+                        <i class='mdi-image-edit'></i>
+                    </a>
+                    <a href="@Url.Action("Delete", "Jobs", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Delete" data-delay="10">
+                        <i class='mdi-action-delete'></i>
+                    </a>
                 </td>
             </tr>
         }

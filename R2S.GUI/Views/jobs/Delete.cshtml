@@ -1,9 +1,16 @@
-﻿@model R2S.Data.Models.job
+﻿@model JobViewDetailsModel
 
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<style>
+    dt {
+        text-transform: capitalize;
+        font-weight: bold;
+    }
+</style>
 
 <h2>Delete</h2>
 
@@ -11,37 +18,38 @@
 <div>
     <h4>job</h4>
     <hr />
+    <h5 class="red-text">@ViewBag.Error</h5>
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.description)
+            @Html.DisplayNameFor(model => model.Job.name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.description)
+            @Html.DisplayFor(model => model.Job.name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.name)
+            @Html.DisplayNameFor(model => model.Job.description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.name)
+            @Html.DisplayFor(model => model.Job.description)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.salary)
+            @Html.DisplayNameFor(model => model.Job.salary)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.salary)
+            @Html.DisplayFor(model => model.Job.salary)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.status)
+            @Html.DisplayNameFor(model => model.Job.status)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.status)
+            @Html.DisplayFor(model => model.Job.statusString)
         </dd>
 
     </dl>

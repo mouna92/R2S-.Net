@@ -85,6 +85,18 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 6.9.9\Assemblies\v4.5\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 6.9.9\Assemblies\v4.5\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Fabric.Plugin, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 6.9.9\Assemblies\v4.5\MySql.Fabric.Plugin.dll</HintPath>
+    </Reference>
     <Reference Include="Spring.Rest, Version=1.1.0.5340, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <HintPath>..\packages\Spring.Rest.1.1.0\lib\net40\Spring.Rest.dll</HintPath>
       <Private>True</Private>
@@ -249,6 +261,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\jobfieldRestModels.cs" />
     <Compile Include="Models\JobFieldViewModel.cs" />
+    <Compile Include="Models\JobViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UsersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -291,6 +304,7 @@
     <Content Include="Content\font\material-design-icons\Material-Design-Icons.eot_" />
     <Content Include="Content\font\material-design-icons\Material-Design-Icons.ttf" />
     <Content Include="Content\font\material-design-icons\Material-Design-Icons.woff" />
+    <Content Include="Error\Error.html" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\handlebars.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

@@ -1,60 +1,65 @@
-﻿@model R2S.Data.Models.job
+﻿@model JobViewModel
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<div class="row">
+    <div class="col s12 m12 l12">
+        <div class="card-panel">
+            <h4 class="header2">Create a new User</h4>
+            <h5 class="red-text">@ViewBag.Error</h5>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <input id="name" type="text" name="name">
+                            <label for="name" class="">Name</label>
+                        </div>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>job</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="input-field col s4">
+                            <input id="salary" type="number" name="salary">
+                            <label for="salary">Salary</label>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="input-field col s4">
+                            <select name="status">
+                                <option value="" disabled selected>Select a Status</option>
+                                <option value="0">Open</option>
+                                <option value="1">Closed</option>
+                            </select>
+                            <label>Status</label>
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.salary, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.salary, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.salary, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="row">
+                        <div class="input-field col s8">
+                            <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                            <label for="description" class="">Description</label>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        
+                    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">
+                                Submit
+                                <i class="mdi-content-send right"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
-}
+</div>
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")
