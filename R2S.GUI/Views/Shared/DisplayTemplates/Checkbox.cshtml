@@ -1,5 +1,5 @@
 ﻿@model Boolean
 
-<input type="checkbox" id="@(ViewBag.Id)" @(Model == true ? "checked" : "") @(ViewBag.Disabled == true ? "disabled" : "")/>
+<input type="checkbox" id="@(ViewBag.Id)" @(Model == true ? "checked" : "") @(ViewBag.Disabled == true ? "disabled" : "") onclick="changeState(@(ViewBag.Id), this)"/>
 <label for="@(ViewBag.Id)">@(ViewBag.Label)</label>
 

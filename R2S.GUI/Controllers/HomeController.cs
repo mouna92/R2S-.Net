@@ -14,7 +14,7 @@ namespace R2S.GUI.Controllers
     public class HomeController : BaseController
     {
         
-        [Authorize(Roles = "RecruitmentManager, ChiefHumanRessource")]
+        [Authorize(Roles = "RecruitmentManager, ChiefHumanResourcesOfficer")]
         public ActionResult Index()
         {
             return View(new BaseViewModel() {User = CurrentUser });

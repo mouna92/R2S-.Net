@@ -5,12 +5,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section Styles{
+    <link href="~/Scripts/Materilize/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+}
+
 <h2>Users Managment</h2>
+
+<div class="row">
+    Filter by role:
+    <a class="btn green" href="@Url.Action("Index", "Users")">ALL</a>
+    <a class="btn" href="@Url.Action("Index", "Users", new {role = "EMPLOYEE"})">Employee</a>
+    <a class="btn cyan" href="@Url.Action("Index", "Users", new {role = "CANDIDATE"})">Candidate</a>
+    <a class="btn purple" href="@Url.Action("Index", "Users", new {role = "RECRUITMENT_MANAGER"})">Reruitement Manager</a>
+</div>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table striped">
+<table id="data-table-simple" class="responsive-table display">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Users.FirstOrDefault().cin)
@@ -33,7 +45,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Users.FirstOrDefault().tel)
         </th>
-        
+
         <th>
             @Html.DisplayNameFor(model => model.Users.FirstOrDefault().country)
         </th>
@@ -52,56 +64,77 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model.Users) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.cin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.firstname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lastname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.birthday)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.city)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.state)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.street)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.active, "Checkbox", new { Id = item.cin, Disabled = true })
-        </td>
-        <td>
-            <a href="@Url.Action("Details", "Users", new {id = item.cin})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Details" data-delay="10">
-                <i class='mdi-action-search'></i>
-            </a>
-            <a href="@Url.Action("Edit", "Users", new {id = item.cin})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Edit" data-delay="10">
-                <i class='mdi-image-edit'></i>
-            </a>
-            <a href="@Url.Action("Delete", "Users", new {id = item.cin})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Delete" data-delay="10">
-                <i class='mdi-action-delete'></i>
-            </a>
-        </td>
-    </tr>
-}
+    @foreach (var item in Model.Users)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.state)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.active, "Checkbox", new {Id = item.cin, Disabled = false})
+            </td>
+            <td>
+                <a href="@Url.Action("Details", "Users", new {id = item.cin})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Details" data-delay="10">
+                    <i class='mdi-action-search'></i>
+                </a>
+                <a href="@Url.Action("Edit", "Users", new {id = item.cin})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Edit" data-delay="10">
+                    <i class='mdi-image-edit'></i>
+                </a>
+                <a href="@Url.Action("Delete", "Users", new {id = item.cin})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Delete" data-delay="10">
+                    <i class='mdi-action-delete'></i>
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>
+
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/Materilize/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Materilize/plugins/data-tables/data-tables-script.js"></script>
+    <script>
+        function changeState(id, input) {
+            console.log(id);
+            console.log(input.checked);
+            input.disabled = true;
+            $.post('@Url.Action("ChangeState")',
+                {
+                    id: id,
+                    state: input.checked
+                }
+            ).done(function() {
+                input.disabled = false;
+            });
+        }
+    </script>
+}

@@ -118,7 +118,7 @@ Author URL: http://www.themeforest.net/user/geekslabs
 <li class="bold">
     <a href="@Url.Action("Index", "Home")" class="waves-effect waves-cyan"><i class='mdi-action-dashboard'></i> Dashboard</a>
 </li>
-@if (User.IsInRole("ChiefHumanRessource"))
+@if (User.IsInRole("ChiefHumanResourcesOfficer"))
 {
 <li class="bold">
     <a href="@Url.Action("Index", "Users")" class="waves-effect waves-cyan"><i class='mdi-action-account-child'></i> Users</a>
@@ -133,7 +133,7 @@ Author URL: http://www.themeforest.net/user/geekslabs
     <a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
 </li>
 }
-@if (User.IsInRole("ChiefHumanRessource")) { 
+@if (User.IsInRole("ChiefHumanResourcesOfficer")) { 
 <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
         <li class="bold">

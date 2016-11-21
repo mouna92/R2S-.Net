@@ -132,7 +132,7 @@ namespace R2S.GUI.Models
                 username = u.username,
                 firstname =  u.firstname,
                 lastname = u.lastname,
-                Role = u is RecruitementManager ? "RecruitmentManager" : (u is ChiefHumanRessource ? "ChiefHumanRessource" : "NotAllowed")
+                Role = u is RecruitementManager ? "RecruitmentManager" : (u is ChiefHumanRessource ? "ChiefHumanResourcesOfficer" : "NotAllowed")
             };
 
             return Task.FromResult(user);
@@ -153,7 +153,7 @@ namespace R2S.GUI.Models
                     username = u.username,
                     firstname = u.firstname,
                     lastname = u.lastname,
-                    Role = u is RecruitementManager ? "RecruitmentManager" : (u is ChiefHumanRessource ? "ChiefHumanRessource" : "NotAllowed")
+                    Role = u is RecruitementManager ? "RecruitmentManager" : (u is ChiefHumanRessource ? "ChiefHumanResourcesOfficer" : "NotAllowed")
                 };
 
                 return Task.FromResult(u1);
@@ -291,7 +291,7 @@ namespace R2S.GUI.Models
             Role role = null;
             if (roleId == 1)
             {
-                role = new Role() {Id = 1, Name = "ChiefHumanRessource" };
+                role = new Role() {Id = 1, Name = "ChiefHumanResourcesOfficer" };
             }else if (roleId == 2)
             {
                 role = new Role() { Id = 2, Name = "Employee" };
@@ -303,9 +303,9 @@ namespace R2S.GUI.Models
         public Task<Role> FindByNameAsync(string roleName)
         {
             Role role = null;
-            if (roleName == "ChiefHumanRessource")
+            if (roleName == "ChiefHumanResourcesOfficer")
             {
-                role = new Role() { Id = 1, Name = "ChiefHumanRessource" };
+                role = new Role() { Id = 1, Name = "ChiefHumanResourcesOfficer" };
             }
             else if (roleName == "RecruitmentManager")
             {

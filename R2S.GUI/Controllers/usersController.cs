@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Mvc;
 using R2S.Data.Models;
@@ -15,12 +17,31 @@ namespace R2S.GUI.Controllers
     public class UsersController : BaseController
     {
         private IUserService _service = new UserService();
-        // GET: users
-        public ActionResult Index()
-        {
-            var users = _service.GetMany();
 
-            return View(new UsersIndexViewModel() { User = CurrentUser, Users = users.ToList() });
+
+        // GET: users
+        public ActionResult Index(string role = null)
+        {
+            var users = (IEnumerable<user>) null;
+
+            if (role != null)
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://localhost:8080/tn.esprit.R2S-web/resources/api/users");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = client.GetAsync("?role=" + role).Result; // Blocking call!
+                if (response.IsSuccessStatusCode)
+                {
+                    users = response.Content.ReadAsAsync<IEnumerable<user>>().Result;
+                }
+            }
+
+            if (users == null)
+            {
+                users = _service.GetMany();
+            }
+
+            return View(new UsersIndexViewModel() {User = CurrentUser, Users = users.ToList()});
         }
 
         // GET: users/Details/5
@@ -42,18 +63,17 @@ namespace R2S.GUI.Controllers
         // GET: users/Create
         public ActionResult Create()
         {
-
             List<user> list = _service.GetMany().ToList();
             user disabledUser = new user() {cin = 0, firstname = "Select a Referer"};
 
-            List<user> disabledUsers = new List<user>() { disabledUser };
+            List<user> disabledUsers = new List<user>() {disabledUser};
 
             list.Insert(0, disabledUser);
 
 
             ViewBag.referee_cin = new SelectList(list, "cin", "firstname", disabledUsers);
 
-            return View(new UsersDetailsViewModel() { User = CurrentUser });
+            return View(new UsersDetailsViewModel() {User = CurrentUser});
         }
 
         // POST: users/Create
@@ -61,7 +81,11 @@ namespace R2S.GUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UsersDetailsViewModel model, [Bind(Include = "cin,active,city,country,state,street,birthday,email,firstname,gender,lastname,password,tel,username,referee_cin")] user user)
+        public ActionResult Create(UsersDetailsViewModel model,
+            [Bind(
+                 Include =
+                     "cin,active,city,country,state,street,birthday,email,firstname,gender,lastname,password,tel,username,referee_cin"
+             )] user user)
         {
             if (ModelState.IsValid)
             {
@@ -69,7 +93,7 @@ namespace R2S.GUI.Controllers
                 var c = Request.Form["role"];
 
                 MyPasswordHasher hasher = new MyPasswordHasher();
-                
+
                 switch (Request["role"])
                 {
                     case "Employee":
@@ -141,7 +165,6 @@ namespace R2S.GUI.Controllers
 
                     default:
                         break;
-
                 }
                 //_service.Add(user);
                 try
@@ -155,7 +178,7 @@ namespace R2S.GUI.Controllers
                     return View(model);
                 }
 
-                
+
                 return RedirectToAction("Index");
             }
 
@@ -177,7 +200,7 @@ namespace R2S.GUI.Controllers
             }
             ViewBag.referee_cin = new SelectList(_service.GetMany(), "cin", "firstname");
 
-            return View(new UsersDetailsViewModel() { User = CurrentUser, NewUser = user });
+            return View(new UsersDetailsViewModel() {User = CurrentUser, NewUser = user});
         }
 
         // POST: users/Edit/5
@@ -185,7 +208,11 @@ namespace R2S.GUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cin,active,city,country,state,street,birthday,email,firstname,gender,lastname,password,tel,username,referee_cin")] user NewUser)
+        public ActionResult Edit(
+            [Bind(
+                 Include =
+                     "cin,active,city,country,state,street,birthday,email,firstname,gender,lastname,password,tel,username,referee_cin"
+             )] user NewUser)
         {
             if (ModelState.IsValid)
             {
@@ -209,7 +236,7 @@ namespace R2S.GUI.Controllers
             {
                 return HttpNotFound();
             }
-            return View(new UsersDetailsViewModel() { User = CurrentUser, NewUser = NewUser });
+            return View(new UsersDetailsViewModel() {User = CurrentUser, NewUser = NewUser});
         }
 
         // POST: users/Delete/5
@@ -218,9 +245,20 @@ namespace R2S.GUI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             user user = _service.GetById(id);
-           _service.Delete(user);
+            _service.Delete(user);
             _service.commit();
             return RedirectToAction("Index");
+        }
+
+        [HttpPost, ActionName("ChangeState")]
+        public ActionResult ChangeState(int id, Boolean state)
+        {
+            user user = _service.GetById(id);
+            user.active = state;
+            _service.Update(user);
+            _service.commit();
+
+            return Content("success");
         }
 
         protected override void Dispose(bool disposing)
