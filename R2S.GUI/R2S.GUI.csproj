@@ -394,6 +394,12 @@
     <Content Include="Views\Skills\Edit.cshtml" />
     <Content Include="Views\Skills\Index.cshtml" />
     <Content Include="Views\Jobs\AddReward.cshtml" />
+    <Content Include="Views\Email\AffichModel.cshtml" />
+    <Content Include="Views\Email\Delete.cshtml" />
+    <Content Include="Views\Email\ParseEmail.cshtml" />
+    <Content Include="Views\Job\HighestSalart.cshtml" />
+    <Content Include="Views\Job\JobStatus.cshtml" />
+    <Content Include="Views\Job\ViewJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
