@@ -1,0 +1,63 @@
+﻿@model IEnumerable<R2S.GUI.Models.JobModel>
+
+@{
+    ViewBag.Title = "JobStatus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.ActionLink("Go Back", "Index")
+<script type="text/javascript">
+@foreach (var item in Model)
+{
+
+
+        <Text>
+    var x = @item.x1;
+
+    var y = @item.x2;
+        </Text>
+    }
+</script>
+<center>
+    <br>
+    <br>
+    <br>
+    <h2>JobStatus</h2>
+    <head>
+        <title>ChartJS - Pie Chart</title>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/Chart.js"></script>
+    </head>
+    <body>
+    <canvas id="mycanvas" width="256" height="256">
+        <script>
+            $(document).ready(function(){
+                var ctx = $("#mycanvas").get(0).getContext("2d");
+
+                //pie chart data
+                //sum of values = 360
+                var data = [
+                    {
+                        value: x,
+                        color: "cornflowerblue",
+                        highlight: "lightskyblue",
+                        label: "Open"
+                    },
+                    {
+                        value: y,
+                        color: "lightgreen",
+                        highlight: "yellowgreen",
+                        label: "Closed"
+                    },
+
+                ];
+
+                //draw
+                var piechart = new Chart(ctx).Pie(data);
+            });
+        </script></canvas>
+    </body>
+   
+</center>
+ 
+

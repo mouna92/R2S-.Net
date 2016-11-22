@@ -19,7 +19,8 @@ namespace R2S.GUI.Models
             jobf.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
             HttpResponseMessage rep = jobf.GetAsync("form").Result;
-            return rep.Content.ReadAsAsync<jobfield>();
+            //return rep.Content.ReadAsAsync<jobfield>();
+            return null;
         }
     }
 }
