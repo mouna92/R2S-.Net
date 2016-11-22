@@ -120,9 +120,12 @@ Author URL: http://www.themeforest.net/user/geekslabs
 </li>
 @if (User.IsInRole("ChiefHumanResourcesOfficer"))
 {
-<li class="bold">
-    <a href="@Url.Action("Index", "Users")" class="waves-effect waves-cyan"><i class='mdi-action-account-child'></i> Users</a>
-</li>
+    <li class="bold">
+        <a href="@Url.Action("Index", "Users")" class="waves-effect waves-cyan"><i class='mdi-action-account-child'></i> Users</a>
+    </li>
+    <li class="bold">
+        <a href="@Url.Action("Index", "Skills")" class="waves-effect waves-cyan"><i class='mdi-action-stars'></i> Skills</a>
+    </li>
 }
 <li class="bold">
     <a href="@Url.Action("Index", "Jobs")" class="waves-effect waves-cyan"><i class='mdi-action-markunread-mailbox'></i> Jobs</a>

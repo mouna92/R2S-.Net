@@ -1,0 +1,56 @@
+﻿@model SkillsViewModel
+
+@{
+    ViewBag.Title = "Skills";
+}
+
+@section Styles{
+    <link href="~/Scripts/Materilize/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table id="data-table-simple" class="responsive-table display">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Skills.FirstOrDefault().name)
+        </th>
+        <th>Candidates Count</th>
+        <th>Jobs Count</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Skills)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.candidateskills.Count)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.jobs.Count)
+            </td>
+            <td>
+                <a href="@Url.Action("Details", "Skills", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Details" data-delay="10">
+                    <i class='mdi-action-search'></i>
+                </a>
+                <a href="@Url.Action("Edit", "Skills", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Edit" data-delay="10">
+                    <i class='mdi-image-edit'></i>
+                </a>
+                <a href="@Url.Action("Delete", "Skills", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Delete" data-delay="10">
+                    <i class='mdi-action-delete'></i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/Materilize/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Materilize/plugins/data-tables/data-tables-script.js"></script>
+    }
