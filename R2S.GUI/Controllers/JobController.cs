@@ -17,7 +17,7 @@ using System.Net.Http.Headers;
 
 namespace R2S.GUI.Controllers
 {
-    public class JobsController : BaseController
+    public class JobController : BaseController
     {
         private IJobService _jobService = new JobService();
         private ISkillService _skillService = new SkillService();
@@ -203,8 +203,8 @@ namespace R2S.GUI.Controllers
 
         public ActionResult JobStatus()
         {
-            int st1 = service.StatisticJobOpen();
-            int st2 = service.StatisticJobClosed();
+            int st1 = _jobService.StatisticJobOpen();
+            int st2 = _jobService.StatisticJobClosed();
 
             List<JobModel> l = new List<JobModel>();
 
@@ -240,9 +240,9 @@ namespace R2S.GUI.Controllers
 
         public ActionResult HighestSalart()
         {
-            double nr = service.HighestSalary();
-            double min = service.LowestSalary();
-            double a = service.Moy();
+            double nr = _jobService.HighestSalary();
+            double min = _jobService.LowestSalary();
+            double a = _jobService.Moy();
             ViewBag.res = nr;
             ViewBag.res1 = min;
            ViewBag.res2 = a;
