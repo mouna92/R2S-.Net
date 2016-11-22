@@ -42,7 +42,7 @@ namespace R2S.GUI.Controllers
         // GET: Skills/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new SkillsViewDetailsModel() { User = CurrentUser} );
         }
 
         // POST: Skills/Create

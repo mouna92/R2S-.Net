@@ -248,6 +248,7 @@
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\FormCustomizationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InterviewController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\JobField\JobFielsController.cs" />
     <Compile Include="Controllers\LinkedInController.cs" />
@@ -261,6 +262,7 @@
     <Compile Include="Helpers\SectionRenderHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\InterviewViewModel.cs" />
     <Compile Include="Models\jobfieldRestModels.cs" />
     <Compile Include="Models\JobFieldViewModel.cs" />
     <Compile Include="Models\JobModel.cs" />
@@ -326,6 +328,19 @@
     <Content Include="Scripts\Materilize\plugins\chartist-js\chartist-script.js" />
     <Content Include="Scripts\Materilize\plugins\chartist-js\chartist.min.css" />
     <Content Include="Scripts\Materilize\plugins\chartist-js\chartist.min.js" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\css\jquery.dataTables.min.css" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\data-tables-script.js" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\images\sort_asc.png" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\images\sort_both.png" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\images\sort_desc.png" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\Materilize\plugins\data-tables\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\Materilize\plugins\fullcalendar\css\fullcalendar.min.css" />
+    <Content Include="Scripts\Materilize\plugins\fullcalendar\fullcalendar-script.js" />
+    <Content Include="Scripts\Materilize\plugins\fullcalendar\js\fullcalendar.min.js" />
+    <Content Include="Scripts\Materilize\plugins\fullcalendar\lib\jquery-ui.custom.min.js" />
+    <Content Include="Scripts\Materilize\plugins\fullcalendar\lib\moment.min.js" />
     <Content Include="Scripts\Materilize\plugins\perfect-scrollbar\perfect-scrollbar.css" />
     <Content Include="Scripts\Materilize\plugins\perfect-scrollbar\perfect-scrollbar.min.js" />
     <Content Include="Scripts\Materilize\prism.js" />
@@ -400,6 +415,8 @@
     <Content Include="Views\Job\HighestSalart.cshtml" />
     <Content Include="Views\Job\JobStatus.cshtml" />
     <Content Include="Views\Job\ViewJob.cshtml" />
+    <Content Include="Views\Interview\Index.cshtml" />
+    <Content Include="Views\Interview\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,57 @@
+﻿@using System.Net.Configuration
+@model InterviewViewModel
+
+@{
+    ViewBag.Title = "Interview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles
+{
+    <link href="~/Scripts/Materilize/plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet"/>
+}
+
+<div class="row">
+    <a href="@Url.Action("Create")" class="btn">Add an Interview</a>
+</div>
+
+<div class="section">
+    
+
+    <div class="col s12 m8 l9">
+        <div id="calendar"></div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/Materilize/plugins/fullcalendar/lib/jquery-ui.custom.min.js"></script>
+    <script src="~/Scripts/Materilize/plugins/fullcalendar/lib/moment.min.js"></script>
+    <script src="~/Scripts/Materilize/plugins/fullcalendar/js/fullcalendar.min.js"></script>
+    <script>
+        $('#calendar')
+            .fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay'
+                },
+                defaultDate: '2016-11-22',
+                editable: true,
+                droppable: true, // this allows things to be dropped onto the calendar
+                eventLimit: true, // allow "more" link when too many events
+                events: [
+                    @foreach (var item in Model.Interviews)
+                    {
+                        <text>
+                        {
+                            start: '@item.date',
+                            title: '@item.user.firstname',
+                            color: '@item.randomColor'
+                        },
+                        </text>
+                    }
+                ]
+            });
+    </script>
+}

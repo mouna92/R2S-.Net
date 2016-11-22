@@ -134,7 +134,7 @@ Author URL: http://www.themeforest.net/user/geekslabs
 @if (User.IsInRole("RecruitmentManager"))
 {
 <li class="bold">
-    <a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
+    <a href="@Url.Action("Index", "Interview")" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
 </li>
 }
 @if (User.IsInRole("ChiefHumanResourcesOfficer")) { 
