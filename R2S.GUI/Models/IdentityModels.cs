@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -25,12 +27,36 @@ namespace R2S.GUI.Models
     {
         public string HashPassword(string password)
         {
-            return password;
+            return CalculateMd5Hash(password);
         }
 
         public PasswordVerificationResult VerifyHashedPassword(string hashedPassword, string providedPassword)
         {
-            return hashedPassword.Equals(providedPassword) ? PasswordVerificationResult.Success : PasswordVerificationResult.Failed;
+            return hashedPassword.Equals(HashPassword(providedPassword), StringComparison.OrdinalIgnoreCase) ? PasswordVerificationResult.Success : PasswordVerificationResult.Failed;
+        }
+
+        public string CalculateMd5Hash(string input)
+
+        {
+            MD5 md5 = System.Security.Cryptography.MD5.Create();
+
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+
+            byte[] hash = md5.ComputeHash(inputBytes);
+
+
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < hash.Length; i++)
+
+            {
+
+                sb.Append(hash[i].ToString("X2"));
+
+            }
+
+            return sb.ToString();
+
         }
     }
 
@@ -97,7 +123,7 @@ namespace R2S.GUI.Models
 
             if (u == null)
             {
-                return null;
+                 return Task.FromResult<User>(null);
             }
             User user = new User()
             {
@@ -106,7 +132,7 @@ namespace R2S.GUI.Models
                 username = u.username,
                 firstname =  u.firstname,
                 lastname = u.lastname,
-                Role = u is Employee ? "Employee" : (u is ChiefHumanRessource ? "ChiefHumanRessource" : null)
+                Role = u is RecruitementManager ? "RecruitmentManager" : (u is ChiefHumanRessource ? "ChiefHumanResourcesOfficer" : "NotAllowed")
             };
 
             return Task.FromResult(user);
@@ -127,7 +153,7 @@ namespace R2S.GUI.Models
                     username = u.username,
                     firstname = u.firstname,
                     lastname = u.lastname,
-                    Role = u is Employee ? "Employee" : (u is ChiefHumanRessource ? "ChiefHumanRessource" : null)
+                    Role = u is RecruitementManager ? "RecruitmentManager" : (u is ChiefHumanRessource ? "ChiefHumanResourcesOfficer" : "NotAllowed")
                 };
 
                 return Task.FromResult(u1);
@@ -265,7 +291,7 @@ namespace R2S.GUI.Models
             Role role = null;
             if (roleId == 1)
             {
-                role = new Role() {Id = 1, Name = "ChiefHumanRessource" };
+                role = new Role() {Id = 1, Name = "ChiefHumanResourcesOfficer" };
             }else if (roleId == 2)
             {
                 role = new Role() { Id = 2, Name = "Employee" };
@@ -277,13 +303,13 @@ namespace R2S.GUI.Models
         public Task<Role> FindByNameAsync(string roleName)
         {
             Role role = null;
-            if (roleName == "ChiefHumanRessource")
+            if (roleName == "ChiefHumanResourcesOfficer")
             {
-                role = new Role() { Id = 1, Name = "ChiefHumanRessource" };
+                role = new Role() { Id = 1, Name = "ChiefHumanResourcesOfficer" };
             }
-            else if (roleName == "Employee")
+            else if (roleName == "RecruitmentManager")
             {
-                role = new Role() { Id = 2, Name = "Employee" };
+                role = new Role() { Id = 2, Name = "RecruitmentManager" };
             }
 
             return Task.FromResult(role);

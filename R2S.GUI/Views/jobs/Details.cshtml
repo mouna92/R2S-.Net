@@ -1,0 +1,58 @@
+﻿@model JobViewDetailsModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    dt {
+        text-transform: capitalize;
+        font-weight: bold;
+    }
+</style>
+
+<h2>Details</h2>
+
+<div>
+    <h4>job</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Job.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model=>model.Job.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Job.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Job.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Job.salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Job.salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Job.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Job.statusString)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Job.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -33,9 +33,7 @@ namespace R2S.Data.Models
         public virtual ICollection<quizmodel> quizmodels { get; set; }
         public virtual ICollection<skill> skills { get; set; }
 
-        public static implicit operator int(job v)
-        {
-            throw new NotImplementedException();
-        }
+        public string statusString { get { return status == 0 ? "Open" : "Closed"; } }
+        
     }
 }

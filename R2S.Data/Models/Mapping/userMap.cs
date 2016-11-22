@@ -80,7 +80,7 @@ namespace R2S.Data.Models.Mapping
             });
             Map<ChiefHumanRessource>(c =>
             {
-                c.Requires("user_role").HasValue("ChiefHumanRessource");
+                c.Requires("user_role").HasValue("ChiefHumanResourcesOfficer");
 
             });
 

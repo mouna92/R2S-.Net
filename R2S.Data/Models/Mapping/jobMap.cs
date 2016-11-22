@@ -24,6 +24,8 @@ namespace R2S.Data.Models.Mapping
             this.Property(t => t.name).HasColumnName("name");
             this.Property(t => t.salary).HasColumnName("salary");
             this.Property(t => t.status).HasColumnName("status");
+
+            this.Ignore(t => t.statusString);
         }
     }
 }
