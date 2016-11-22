@@ -373,11 +373,11 @@
     <Content Include="Views\LinkedIn\Callback.cshtml" />
     <Content Include="Views\LinkedIn\Index.cshtml" />
     <Content Include="Views\LinkedIn\SignIn.cshtml" />
-    <Content Include="Views\Jobs\Create.cshtml" />
-    <Content Include="Views\Jobs\Delete.cshtml" />
-    <Content Include="Views\Jobs\Details.cshtml" />
-    <Content Include="Views\Jobs\Edit.cshtml" />
-    <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\Job\Create.cshtml" />
+    <Content Include="Views\Job\Delete.cshtml" />
+    <Content Include="Views\Job\Details.cshtml" />
+    <Content Include="Views\Job\Edit.cshtml" />
+    <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
@@ -393,7 +393,7 @@
     <Content Include="Views\Skills\Details.cshtml" />
     <Content Include="Views\Skills\Edit.cshtml" />
     <Content Include="Views\Skills\Index.cshtml" />
-    <Content Include="Views\Jobs\AddReward.cshtml" />
+    <Content Include="Views\Job\AddReward.cshtml" />
     <Content Include="Views\Email\AffichModel.cshtml" />
     <Content Include="Views\Email\Delete.cshtml" />
     <Content Include="Views\Email\ParseEmail.cshtml" />

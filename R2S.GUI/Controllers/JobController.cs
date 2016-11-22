@@ -24,7 +24,19 @@ namespace R2S.GUI.Controllers
 
         public ActionResult Index(int? skillId)
         {
-            if(skillId != null)
+
+            skill disabledSkill = new skill() { id = 0, name = "Select a Skill" };
+
+            List<skill> disabledSkills = new List<skill>() { disabledSkill };
+            List<skill> list = _skillService.GetMany().ToList();
+
+            list.Insert(0, disabledSkill);
+
+
+            ViewBag.referee_cin = new SelectList(list, "cin", "firstname", disabledSkills);
+            ViewBag.skills = new SelectList(list, "id", "name");
+
+            if (skillId != null)
             {
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri("http://localhost:8080/tn.esprit.R2S-web/resources/api/job");
@@ -41,16 +53,7 @@ namespace R2S.GUI.Controllers
                 }
             }
 
-            skill disabledSkill = new skill() { id = 0, name = "Select a Skill" };
-
-            List<skill> disabledSkills = new List<skill>() { disabledSkill };
-            List<skill> list = _skillService.GetMany().ToList();
-
-            list.Insert(0, disabledSkill);
-
-
-            ViewBag.referee_cin = new SelectList(list, "cin", "firstname", disabledSkills);
-            ViewBag.skills = new SelectList(list, "id", "name");
+            
 
             return View(new JobViewModel() { User = CurrentUser,
                 Jobs = _jobService.GetMany().ToList() });

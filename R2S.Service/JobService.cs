@@ -25,7 +25,7 @@ namespace R2S.Service
 
             var results = from g in dbfactory.dbcontext.jobs
 
-                where g.status == 0
+                where g.status.Equals("Open")
 
                 select g;
             return results.Count();
@@ -36,7 +36,7 @@ namespace R2S.Service
 
             var results = from g in dbfactory.dbcontext.jobs
 
-                where g.status == 1
+                where g.status.Equals("Closed")
 
                 select g;
             return results.Count();

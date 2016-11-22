@@ -69,16 +69,16 @@
                     </ul>
                 </td>
                 <td>
-                    <a href="@Url.Action("Details", "Jobs", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Details" data-delay="10">
+                    <a href="@Url.Action("Details", "Job", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Details" data-delay="10">
                         <i class='mdi-action-search'></i>
                     </a>
-                    <a href="@Url.Action("Edit", "Jobs", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Edit" data-delay="10">
+                    <a href="@Url.Action("Edit", "Job", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Edit" data-delay="10">
                         <i class='mdi-image-edit'></i>
                     </a>
-                    <a href="@Url.Action("Delete", "Jobs", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Delete" data-delay="10">
+                    <a href="@Url.Action("Delete", "Job", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Delete" data-delay="10">
                         <i class='mdi-action-delete'></i>
                     </a>
-                    <a href="@Url.Action("AddReward", "Jobs", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Add Reward" data-delay="10">
+                    <a href="@Url.Action("AddReward", "Job", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Add Reward" data-delay="10">
                         <i class='mdi-action-note-add'></i>
                     </a>
                 </td>
@@ -94,12 +94,9 @@
 
     <script>
         $(document).ready(function () {
-            $("#skills").change(function (input) {
-                alert("clicked");
-                console.log(input);
-                console.log($(this));
+            $("#skills").change(function () {
                 if ($(this).val() != 0) {
-                    window.location = "@Url.Action("Index", "Jobs")" + "?skillId=" + $(this).val();
+                    window.location = "@Url.Action("Index", "Job")" + "?skillId=" + $(this).val();
                 }
             });
         });
