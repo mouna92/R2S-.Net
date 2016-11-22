@@ -1,8 +1,8 @@
 ﻿using R2S.Data.Models;
 using Service.pattern;
 using R2S.Data.Infrastructures;
-using R2S.Data.Models;
-using Service.pattern;
+
+
 namespace R2S.Service
 
 {
@@ -14,6 +14,11 @@ namespace R2S.Service
         public UserService() : base(Utw)
         {
 
+        }
+
+        public user GetById(long id)
+        {
+            return dbfactory.dbcontext.users.Find(id);
         }
     }
 }

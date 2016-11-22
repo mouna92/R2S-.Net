@@ -13,7 +13,7 @@ namespace R2S.GUI.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        private ApplicationSignInManager _signInManager;
+        /*private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
         public ManageController()
@@ -384,6 +384,6 @@ namespace R2S.GUI.Controllers
             Error
         }
 
-#endregion
+#endregion*/
     }
 }

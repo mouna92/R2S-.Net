@@ -5,6 +5,6 @@ namespace R2S.Service
 {
     public interface IUserService : IServiceGenerique<user>
     {
-        
+        user GetById(long id);
     }
 }

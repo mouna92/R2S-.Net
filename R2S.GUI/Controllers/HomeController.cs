@@ -1,18 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using R2S.Data.Models;
 
 namespace R2S.GUI.Controllers
 {
     public class HomeController : Controller
     {
+        private UserManager _userManager;
+        private RoleManager _roleManager;
+
+        public UserManager UserManager
+        {
+            get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<UserManager>(); }
+            private set { _userManager = value; }
+        }
+        
+
+        [Authorize(Roles = "Employee")]
         public ActionResult Index()
         {
-            return View();
+
+            var user = UserManager.FindByIdAsync(User.Identity.GetUserId<long>()).Result;
+            
+
+            return View(new BaseViewModel() {User = user});
         }
 
         public ActionResult About()
