@@ -9,16 +9,49 @@ using System.Web.Mvc;
 using R2S.Data.Models;
 using R2S.Service;
 using R2S.GUI.Models;
+using R2S.Service.Interfaces;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace R2S.GUI.Controllers
 {
     public class JobsController : BaseController
     {
         private IJobService _jobService = new JobService();
+        private ISkillService _skillService = new SkillService();
 
-        public ActionResult Index()
+        public ActionResult Index(int? skillId)
         {
-            return View(new JobViewModel() { User = CurrentUser, Jobs = _jobService.GetMany().ToList() });
+            if(skillId != null)
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://localhost:8080/tn.esprit.R2S-web/resources/api/job");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = client.GetAsync("?skillId=" + skillId).Result; // Blocking call!
+                if (response.IsSuccessStatusCode)
+                {
+                    var jobs = response.Content.ReadAsAsync<IEnumerable<job>>().Result;
+                    return View(new JobViewModel()
+                    {
+                        User = CurrentUser,
+                        Jobs = jobs
+                    });
+                }
+            }
+
+            skill disabledSkill = new skill() { id = 0, name = "Select a Skill" };
+
+            List<skill> disabledSkills = new List<skill>() { disabledSkill };
+            List<skill> list = _skillService.GetMany().ToList();
+
+            list.Insert(0, disabledSkill);
+
+
+            ViewBag.referee_cin = new SelectList(list, "cin", "firstname", disabledSkills);
+            ViewBag.skills = new SelectList(list, "id", "name");
+
+            return View(new JobViewModel() { User = CurrentUser,
+                Jobs = _jobService.GetMany().ToList() });
         }
 
         public ActionResult Details(int id)
@@ -33,6 +66,43 @@ namespace R2S.GUI.Controllers
                 return HttpNotFound();
             }
             return View(new JobViewDetailsModel() { User = CurrentUser, Job = job });
+        }
+
+        public ActionResult AddReward(int id)
+        {
+            job job = _jobService.GetById(id);
+
+            if (job == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(new JobViewDetailsModel() { User = CurrentUser, Job = job });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult AddReward([Bind(Include = "points,progress,job_id")] reward reward)
+        {
+            if(reward == null)
+            {
+                return HttpNotFound();
+            }
+
+            job job = _jobService.GetById((int)reward.job_id);
+            
+            if (job == null)
+            {
+                return HttpNotFound();
+            }
+
+            job.rewards.Add(reward);
+
+            _jobService.Update(job);
+            _jobService.commit();
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult Create()
