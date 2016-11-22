@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using R2S.Data.Models;
 using R2S.Service;
 
@@ -11,11 +16,18 @@ namespace R2S.GUI.Controllers
 {
     public class EmailController : Controller
     {
+        public static string parse;
+
+        
         EmailModelService email = null;
+        JobService job = null;
+        UserService user = null;
+
         public EmailController()
         {
-             email = new EmailModelService();
-
+            email = new EmailModelService();
+            job = new JobService();
+            user = new UserService();
         }
 
         // GET: Email
@@ -25,6 +37,7 @@ namespace R2S.GUI.Controllers
             return View(e.ToList());
 
         }
+
         [HttpPost]
         public ActionResult Index(String search)
         {
@@ -57,8 +70,8 @@ namespace R2S.GUI.Controllers
 
         // POST: Email/Create
         [HttpPost]
-        
-            public ActionResult Create(emailmodel e)
+
+        public ActionResult Create(emailmodel e)
         {
 
             if (ModelState.IsValid)
@@ -69,7 +82,10 @@ namespace R2S.GUI.Controllers
 
             }
 
-            else { return View(e); }
+            else
+            {
+                return View(e);
+            }
 
         }
 
@@ -127,6 +143,79 @@ namespace R2S.GUI.Controllers
             email.commit();
             return RedirectToAction("Index");
         }
+
+        public async Task<string> GetWSObjectEmail<T>(string uriActionString)
+        {
+            T returnValue =
+                default(T);
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://localhost:8080/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage response = await client.GetAsync(uriActionString);
+                    response.EnsureSuccessStatusCode();
+                    return ((HttpResponseMessage) response).Content.ReadAsStringAsync().Result;
+                }
+
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.GetBaseException().Message);
+                throw (e);
+            }
+        }
+
+        public async Task<string> ParseEmail(long idModel , long idUser, long idJo)
+        {
+
+            
+            ViewBag.Message = "Your products page.";
+            string urlAction = String.Format("/tn.esprit.R2S-web/resources/api/email-model/parse/{0}/{1}/{2}", idModel, idUser, idJo);
+            String joi = await GetWSObjectEmail<String>(urlAction);
+            parse = joi;
+            return joi;
+            //return View();
+        }
+        
+        public async Task<ActionResult> AffichModel(long? mail, long? idUser, long? jo)
+        {
+            var a = mail;
+            ViewBag.Message = "Your products page.";
+            if ((mail != null)&& (idUser != null) && (jo != null))
+            {
+                string urlAction = String.Format("/tn.esprit.R2S-web/resources/api/email-model/parse/{0}/{1}/{2}", mail, idUser, jo);
+                String joi = await GetWSObjectEmail<String>(urlAction);
+                parse = joi;
+            }
+                    
+            ViewBag.e = email.GetMany().ToList();
+
+            ViewBag.j = job.GetMany().ToList();
+            ViewBag.u = user.GetMany().ToList();
+            return View();
+        }
+
+       
+
+        public async Task<ActionResult> SendMail()
+        {
+            SmtpClient smtp = new SmtpClient();
+            MailMessage msg = new MailMessage();
+            smtp.Credentials = new NetworkCredential("mouna.sassi@esprit.tn", "moncef123456");
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Timeout = 20000;
+            msg.From = new MailAddress("mouna.sassi@esprit.tn");
+            msg.To.Add("mohamedfiras.barrek@esprit.tn");
+            msg.Body = parse;
+            smtp.Send(msg);
+            return View();
         }
     }
 
+}

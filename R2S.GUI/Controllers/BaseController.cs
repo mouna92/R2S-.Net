@@ -13,11 +13,8 @@ namespace R2S.GUI.Controllers
 {
     public class BaseController : Controller
     {
-        // GET: Base
-        public ActionResult Index()
-        {
-            return View();
-        }
+       
+
         public async Task<T> GetWSObject<T>(string uriActionString)
         {
             T returnValue =
@@ -31,6 +28,7 @@ namespace R2S.GUI.Controllers
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     HttpResponseMessage response = await client.GetAsync(uriActionString);
                     response.EnsureSuccessStatusCode();
+                    var a = ((HttpResponseMessage) response).Content.ReadAsStringAsync().Result;
                     returnValue = JsonConvert.DeserializeObject<T>(((HttpResponseMessage)response).Content.ReadAsStringAsync().Result);
                 }
                 return returnValue;

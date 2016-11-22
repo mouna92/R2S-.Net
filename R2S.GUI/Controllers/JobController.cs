@@ -68,7 +68,7 @@ namespace R2S.GUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
+
             job job = service.GetById(id);
 
             if (job == null)
@@ -128,6 +128,7 @@ namespace R2S.GUI.Controllers
             }
             base.Dispose(disposing);
         }
+
         public ActionResult JobStatus()
         {
             int st1 = service.StatisticJobOpen();
@@ -141,8 +142,8 @@ namespace R2S.GUI.Controllers
             {
                 l.Add(new JobModel
                 {
-                    x1=st1,
-                    x2=st2,
+                    x1 = st1,
+                    x2 = st2,
 
 
                 });
@@ -150,6 +151,7 @@ namespace R2S.GUI.Controllers
 
             return View(l);
         }
+
         public async Task<ActionResult> ViewJob()
         {
             ViewBag.Message = "Your products page.";
@@ -160,8 +162,19 @@ namespace R2S.GUI.Controllers
             int joi1 = await GetWSObject<int>(urlAction1);
             ViewBag.res = joi;
             ViewBag.res2 = joi1;
+
             return View();
         }
 
+        public ActionResult HighestSalart()
+        {
+            double nr = service.HighestSalary();
+            double min = service.LowestSalary();
+            double a = service.Moy();
+            ViewBag.res = nr;
+            ViewBag.res1 = min;
+           ViewBag.res2 = a;
+            return View();
+        }
     }
 }

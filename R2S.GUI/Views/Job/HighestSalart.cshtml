@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "HighestSalart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div style="float: left;">
+    <script type="text/javascript">
+        var x =@ViewBag.res;
+        var y= @ViewBag.res1;
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ["Element", "Salary", { role: "style" } ],
+                ["Highest Salary", x, "#2196f3"],
+                ["Lowest Salary", y, " teal lighten-3"]
+
+
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                { calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation" },
+                2]);
+
+            var options = {
+                title: "The classment of salaries , in dinars",
+                width: 600,
+                height: 400,
+                bar: {groupWidth: "95%"},
+                legend: { position: "none" },
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+            chart.draw(view, options);
+        }
+    </script>
+</div>
+<div id="columnchart_values" style="width: 600px; height: 430px;"></div>
+<div class="card-panel pink accent-2  " style="float: right; margin-top: -300px; margin-right: 150px; ">The average of salaries is : @ViewBag.res2</div>

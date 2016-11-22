@@ -12,5 +12,8 @@ namespace R2S.Service
     {
       int  StatisticJobOpen();
          int   StatisticJobClosed();
+         double HighestSalary();
+        double LowestSalary();
+         double Moy();
     }
 }
