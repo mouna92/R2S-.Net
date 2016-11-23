@@ -51,7 +51,9 @@ namespace R2S.Console
                 ILinkedIn linkedIn = linkedInServiceProvider.GetApi(oauthAccessToken.Value, oauthAccessToken.Secret);
 
                 LinkedInProfile profile = linkedIn.ProfileOperations.GetUserProfileAsync().Result;
-                
+
+                string stringResult = linkedIn.RestOperations.GetForObject<string>("skill?name=java&format=json");
+                JsonValue jsonResult = linkedIn.RestOperations.GetForObject<JsonValue>("skill?name=java&format=json");
             }
             catch (AggregateException ae)
             {
