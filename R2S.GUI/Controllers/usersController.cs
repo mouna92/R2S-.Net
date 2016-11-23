@@ -27,7 +27,7 @@ namespace R2S.GUI.Controllers
             if (role != null)
             {
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("http://localhost:8080/tn.esprit.R2S-web/resources/api/users");
+                client.BaseAddress = new Uri("http://localhost:8090/tn.esprit.R2S-web/resources/api/users");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage response = client.GetAsync("?role=" + role).Result; // Blocking call!
                 if (response.IsSuccessStatusCode)

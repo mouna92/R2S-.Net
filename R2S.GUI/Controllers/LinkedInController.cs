@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using R2S.Data.Models;
+using Spring.Json;
 using Spring.Social.OAuth1;
 using Spring.Social.LinkedIn.Api;
 using Spring.Social.LinkedIn.Connect;
+using WebGrease.Css.Extensions;
 
 namespace R2S.GUI.Controllers
 {
@@ -56,5 +61,27 @@ namespace R2S.GUI.Controllers
             LinkedInProfile profile = linkedInClient.ProfileOperations.GetUserProfileAsync().Result;
             return View(profile);
         }
+
+
+        
+
+        public ActionResult Search(string skills)
+        {
+            List<LinkedInFullProfile> profiles = JsonConvert.DeserializeObject<List<LinkedInFullProfile>>(System.IO.File.ReadAllText(@"C:\Users\kello\Source\Repos\R2S-.Net\R2S.GUI\members.json"));
+            List<LinkedInFullProfile> profilesSearched =new List<LinkedInFullProfile>();
+            foreach (var p in profiles)
+            {
+                foreach (var s in p.Skills)
+                {
+                    if (s.Equals(skills))
+                    { profilesSearched.Add(p);}
+                }
+                
+            }
+            return View(profilesSearched);
+            
+        }
+
+
     }
 }

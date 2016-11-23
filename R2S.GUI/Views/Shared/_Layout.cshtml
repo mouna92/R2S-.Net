@@ -3,6 +3,7 @@
 @*model R2S.GUI.Models.BaseViewModel*@
 
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <!--================================================================================
 Item Name: Materialize - Material Design Admin Template
@@ -109,9 +110,9 @@ Author URL: http://www.themeforest.net/user/geekslabs
                 </li>
             </ul>
             <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">
-                <span class="profile-name">@Model.FirstName @Model.LastName</span> <i class="mdi-navigation-arrow-drop-down right margin" style="margin: 0"></i>
+               <!-- <span class="profile-name">--Model.FirstName --Model.LastName</span> <i class="mdi-navigation-arrow-drop-down right margin" style="margin: 0"></i>-->
             </a>
-            <p class="user-roal">@Model.Role</p>
+            
         </div>
     </div>
 </li>
@@ -120,17 +121,20 @@ Author URL: http://www.themeforest.net/user/geekslabs
 </li>
 @if (User.IsInRole("ChiefHumanResourcesOfficer"))
 {
-<li class="bold">
-    <a href="@Url.Action("Index", "Users")" class="waves-effect waves-cyan"><i class='mdi-action-account-child'></i> Users</a>
-</li>
+    <li class="bold">
+        <a href="@Url.Action("Index", "Users")" class="waves-effect waves-cyan"><i class='mdi-action-account-child'></i> Users</a>
+    </li>
+    <li class="bold">
+        <a href="@Url.Action("Index", "Skills")" class="waves-effect waves-cyan"><i class='mdi-action-stars'></i> Skills</a>
+    </li>
 }
 <li class="bold">
-    <a href="@Url.Action("Index", "Jobs")" class="waves-effect waves-cyan"><i class='mdi-action-markunread-mailbox'></i> Jobs</a>
+    <a href="@Url.Action("Index", "Job")" class="waves-effect waves-cyan"><i class='mdi-action-markunread-mailbox'></i> Jobs</a>
 </li>
 @if (User.IsInRole("RecruitmentManager"))
 {
 <li class="bold">
-    <a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
+    <a href="@Url.Action("Index", "Interview")" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
 </li>
 }
 @if (User.IsInRole("ChiefHumanResourcesOfficer")) { 

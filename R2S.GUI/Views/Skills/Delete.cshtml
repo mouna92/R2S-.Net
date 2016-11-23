@@ -1,0 +1,44 @@
+﻿@model SkillsViewDetailsModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<style>
+    dt {
+        text-transform: capitalize;
+        font-weight: bold;
+    }
+</style>
+
+@if (Model.Skill.jobs.Count > 0 && Model.Skill.candidateskills.Count > 0)
+{
+    <h4 class="red-text">You can't delete this skill</h4>
+    <h5>This skill have @Model.Skill.jobs.Count Job(s), and @Model.Skill.candidateskills.Count Candidate(s) attached to it.</h5>
+}else { 
+<h3>Are you sure you want to delete Skill?</h3>
+<div>
+    <h4>skill</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Skill.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skill.name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+}
+@Html.ActionLink("Back to List", "Index")
