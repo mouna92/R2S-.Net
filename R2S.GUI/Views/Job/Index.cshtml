@@ -14,6 +14,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<div class="row">
+    <div class="col s4">
+        @Html.DropDownList("skills")
+        <label for="skills">Search By Skill: </label>
+    </div>
+</div>
+
+
 <table id="data-table-simple" class="responsive-table display" cellspacing="0">
     <thead>
         <tr>
@@ -28,6 +37,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Jobs.FirstOrDefault().status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jobs.FirstOrDefault().rewards)
             </th>
             <th></th>
         </tr>
@@ -49,14 +61,25 @@
                     @Html.DisplayFor(modelItem => item.statusString)
                 </td>
                 <td>
-                    <a href="@Url.Action("Details", "Jobs", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Details" data-delay="10">
+                    <ul>
+                        @foreach (var reward in item.rewards)
+                        {
+                            <li>@reward.progressString : @reward.points points</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Job", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Details" data-delay="10">
                         <i class='mdi-action-search'></i>
                     </a>
-                    <a href="@Url.Action("Edit", "Jobs", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Edit" data-delay="10">
+                    <a href="@Url.Action("Edit", "Job", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Edit" data-delay="10">
                         <i class='mdi-image-edit'></i>
                     </a>
-                    <a href="@Url.Action("Delete", "Jobs", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Delete" data-delay="10">
+                    <a href="@Url.Action("Delete", "Job", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Delete" data-delay="10">
                         <i class='mdi-action-delete'></i>
+                    </a>
+                    <a href="@Url.Action("AddReward", "Job", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Add Reward" data-delay="10">
+                        <i class='mdi-action-note-add'></i>
                     </a>
                 </td>
             </tr>
@@ -69,4 +92,13 @@
     <script type="text/javascript" src="~/Scripts/Materilize/plugins/data-tables/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Materilize/plugins/data-tables/data-tables-script.js"></script>
 
+    <script>
+        $(document).ready(function () {
+            $("#skills").change(function () {
+                if ($(this).val() != 0) {
+                    window.location = "@Url.Action("Index", "Job")" + "?skillId=" + $(this).val();
+                }
+            });
+        });
+    </script>
 }

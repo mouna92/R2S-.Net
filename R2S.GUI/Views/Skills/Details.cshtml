@@ -1,0 +1,44 @@
+﻿@model SkillsViewDetailsModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+    dt {
+        text-transform: capitalize;
+        font-weight: bold;
+    }
+</style>
+<div>
+    <h4>Skill</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Skill.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skill.name)
+        </dd>
+
+        <dt>
+            Candidates With this Skill:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Skill.candidateskills.Count)
+        </dd>
+
+        <dt>
+            Jobs With this Skill:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Skill.jobs.Count)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Skill.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

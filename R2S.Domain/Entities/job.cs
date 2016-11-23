@@ -22,7 +22,7 @@ namespace R2S.Data.Models
         public string description { get; set; }
         public string name { get; set; }
         public Nullable<double> salary { get; set; }
-        public Nullable<int> status { get; set; }
+        public string status { get; set; }
         public virtual ICollection<candidatejob> candidatejobs { get; set; }
         public virtual ICollection<candidatequizmodel> candidatequizmodels { get; set; }
         public virtual ICollection<interview> interviews { get; set; }
@@ -33,7 +33,7 @@ namespace R2S.Data.Models
         public virtual ICollection<quizmodel> quizmodels { get; set; }
         public virtual ICollection<skill> skills { get; set; }
 
-        public string statusString { get { return status == 0 ? "Open" : "Closed"; } }
+        public string statusString { get { return status.Equals("0") ? "Open" : "Closed"; } }
         
     }
 }

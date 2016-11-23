@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section">
+    <form method="post">
+        <div class="row">
+            <div class="input-field col s4">
+                <input type="date" class="datepicker" name="date" id="date">
+                <label for="date">Interview Date</label>
+            </div>
+
+
+            <div class="input-field col s4">
+                @Html.DropDownList("candidate_cin")
+                <label for="referee_cin">User</label>
+            </div>
+            <div class="input-field col s4">
+                @Html.DropDownList("job_id")
+                <label for="referee_cin">Job</label>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <button class="btn cyan waves-effect waves-light right" type="submit" name="action">
+                    Submit
+                    <i class="mdi-content-send right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

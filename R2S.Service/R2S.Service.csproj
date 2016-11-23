@@ -53,12 +53,16 @@
     <Compile Include="EmailModelService.cs" />
     <Compile Include="Interfaces\ICandidateFieldService.cs" />
     <Compile Include="Interfaces\IEmailModelService.cs" />
+    <Compile Include="Interfaces\IInterviewService.cs" />
     <Compile Include="Interfaces\IJobFieldService.cs" />
     <Compile Include="Interfaces\IJobService.cs" />
+    <Compile Include="Interfaces\ISkillService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="InterviewService.cs" />
     <Compile Include="JobFieldService.cs" />
     <Compile Include="JobService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SkillService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,50 @@
+﻿@model JobViewDetailsModel
+
+@{
+    ViewBag.Title = "Add Reward";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5>Add Reward For Job: @Model.Job.name</h5>
+
+<div class="row">
+    <div class="col s12 m12 l12">
+        <div class="card-panel">
+            <h4 class="header2">Create a new Reward</h4>
+            <h5 class="red-text">@ViewBag.Error</h5>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("job_id", Model.Job.id)
+
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <select name="progress" required>
+                                <option value="" disabled selected>Select a Progress</option>
+                                <option value="0">STARTED</option>
+                                <option value="1">FAILED</option>
+                                <option value="2">PASSED QUIZ</option>
+                                <option value="3">REFUSED</option>
+                                <option value="4">PASSED</option>
+                            </select>
+                            <label>Progress</label>
+                        </div>
+
+                        <div class="input-field col s4">
+                            <input id="points" type="number" name="points" required>
+                            <label for="points" class="">Points</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">
+                                Submit
+                                <i class="mdi-content-send right"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+        </div>
+    </div>
+</div>

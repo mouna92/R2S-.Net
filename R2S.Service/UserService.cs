@@ -1,4 +1,6 @@
-﻿using R2S.Data.Models;
+﻿using System;
+using System.Linq;
+using R2S.Data.Models;
 using Service.pattern;
 using R2S.Data.Infrastructures;
 
@@ -20,5 +22,7 @@ namespace R2S.Service
         {
             return dbfactory.dbcontext.users.Find(id);
         }
+
+       
     }
 }
