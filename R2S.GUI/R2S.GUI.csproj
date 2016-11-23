@@ -247,7 +247,6 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\FormCustomizationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\JobField\JobFielsController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\LinkedInController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -259,7 +258,6 @@
     <Compile Include="Helpers\SectionRenderHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\jobfieldRestModels.cs" />
     <Compile Include="Models\JobFieldViewModel.cs" />
     <Compile Include="Models\JobViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

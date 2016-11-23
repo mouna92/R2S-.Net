@@ -19,7 +19,7 @@ namespace R2S.GUI.Controllers
         [HttpGet]
         public ActionResult Job()
         {
-            return View(new JobFieldViewModel() { User = CurrentUser });
+            return View(new JobFieldViewModel() { User = CurrentUser,  JobField= _jobFieldService.GetMany().ToList() });
         }
 
         [HttpGet]
@@ -41,18 +41,44 @@ namespace R2S.GUI.Controllers
 
             foreach (var c in checkbox.Values())
             {
-                jobfield field = new jobfield() { fieldName = c.ToString(), fieldType = jobfield.Checkbox };
-                _jobFieldService.Add(field);
+                String fieldName = c.ToString();
+                int count = _jobFieldService.GetMany(
+                    jb => 
+                        jb.fieldName.Equals(fieldName) &&
+                        jb.fieldType == jobfield.Checkbox
+                    ).ToList().Count;
+                if(count == 0 && (fieldName != null && fieldName.Length > 0)) { 
+                    jobfield field = new jobfield() { fieldName = c.ToString(), fieldType = jobfield.Checkbox };
+                    _jobFieldService.Add(field);
+                }
             }
             foreach (var c in text.Values())
             {
-                jobfield field = new jobfield() { fieldName = c.ToString(), fieldType = jobfield.TextField };
-                _jobFieldService.Add(field);
+                String fieldName = c.ToString();
+                int count = _jobFieldService.GetMany(
+                    jb =>
+                        jb.fieldName.Equals(fieldName) &&
+                        jb.fieldType == jobfield.TextField
+                    ).ToList().Count;
+                if (count == 0 && (fieldName != null && fieldName.Length > 0))
+                {
+                    jobfield field = new jobfield() { fieldName = c.ToString(), fieldType = jobfield.TextField };
+                    _jobFieldService.Add(field);
+                }
             }
             foreach (var c in radio.Values())
             {
-                jobfield field = new jobfield() { fieldName = c.ToString(), fieldType = jobfield.Radiobox };
-                _jobFieldService.Add(field);
+                String fieldName = c.ToString();
+                int count = _jobFieldService.GetMany(
+                    jb =>
+                        jb.fieldName.Equals(fieldName) &&
+                        jb.fieldType == jobfield.Radiobox
+                    ).ToList().Count;
+                if (count == 0 && (fieldName != null && fieldName.Length > 0))
+                {
+                    jobfield field = new jobfield() { fieldName = c.ToString(), fieldType = jobfield.Radiobox };
+                    _jobFieldService.Add(field);
+                }
             }
 
             _jobFieldService.commit();
