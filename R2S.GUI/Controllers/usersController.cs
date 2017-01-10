@@ -22,7 +22,7 @@ namespace R2S.GUI.Controllers
         // GET: users
         public ActionResult Index(string role = null)
         {
-            var users = (IEnumerable<user>) null;
+            var users = (IEnumerable<user>)null;
 
             if (role != null)
             {
@@ -41,7 +41,7 @@ namespace R2S.GUI.Controllers
                 users = _service.GetMany();
             }
 
-            return View(new UsersIndexViewModel() {User = CurrentUser, Users = users.ToList()});
+            return View(new UsersIndexViewModel() { User = CurrentUser, Users = users.ToList() });
         }
 
         // GET: users/Details/5
@@ -57,40 +57,53 @@ namespace R2S.GUI.Controllers
             {
                 return HttpNotFound();
             }
-            return View(new UsersDetailsViewModel() {User = CurrentUser, NewUser = user});
+            return View(new UsersDetailsViewModel() { User = CurrentUser, NewUser = user });
         }
 
         // GET: users/Create
         public ActionResult Create()
         {
             List<user> list = _service.GetMany().ToList();
-            user disabledUser = new user() {cin = 0, firstname = "Select a Referer"};
+            user disabledUser = new user() { cin = 0, firstname = "Select a Referer" };
 
-            List<user> disabledUsers = new List<user>() {disabledUser};
+            List<user> disabledUsers = new List<user>() { disabledUser };
 
             list.Insert(0, disabledUser);
 
 
             ViewBag.referee_cin = new SelectList(list, "cin", "firstname", disabledUsers);
 
-            return View(new UsersDetailsViewModel() {User = CurrentUser});
+            return View(new UsersDetailsViewModel() { User = CurrentUser });
         }
 
-        // POST: users/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UsersDetailsViewModel model,
-            [Bind(
-                 Include =
-                     "cin,active,city,country,state,street,birthday,email,firstname,gender,lastname,password,tel,username,referee_cin"
-             )] user user)
+        public ActionResult Create(UsersDetailsViewModel model
+             /*[Bind(
+                  Include =
+                      "cin,active,city,country,state,street,birthday,email,firstname,gender,lastname,password,tel,username,referee_cin"
+              )] user user*/)
         {
+            var user = new user();
             if (ModelState.IsValid)
             {
-                var a = Request["role"];
-                var c = Request.Form["role"];
+                user.cin = Convert.ToInt64(Request["cin"]);
+                user.active = Request["active"] == "1";
+                user.city = Request["city"];
+                user.country = Request["country"];
+                user.state = Request["state"];
+                user.street = Request["street"];
+                user.birthday = Convert.ToDateTime(Request["birthday"]);
+                user.email = Request["email"];
+                user.firstname = Request["firstname"];
+                user.lastname = Request["lastname"];
+                user.gender = Request["gender"];
+                user.password = Request["password"];
+                user.username = Request["username"];
+                user.tel = Request["tel"];
+                user.referee_cin = Convert.ToInt32(Request["referee_cin"]);
+
 
                 MyPasswordHasher hasher = new MyPasswordHasher();
 
@@ -103,7 +116,7 @@ namespace R2S.GUI.Controllers
                             firstname = user.firstname,
                             lastname = user.lastname,
                             username = user.username,
-                            password = hasher.HashPassword(user.password),
+                            password = hasher.HashPassword(user.password).ToLower(),
                             birthday = user.birthday,
                             email = user.email,
                             gender = user.gender,
@@ -127,7 +140,7 @@ namespace R2S.GUI.Controllers
                             firstname = user.firstname,
                             lastname = user.lastname,
                             username = user.username,
-                            password = hasher.HashPassword(user.password),
+                            password = hasher.HashPassword(user.password).ToLower(),
                             birthday = user.birthday,
                             email = user.email,
                             gender = user.gender,
@@ -149,7 +162,7 @@ namespace R2S.GUI.Controllers
                             firstname = user.firstname,
                             lastname = user.lastname,
                             username = user.username,
-                            password = hasher.HashPassword(user.password),
+                            password = hasher.HashPassword(user.password).ToLower(),
                             birthday = user.birthday,
                             email = user.email,
                             gender = user.gender,
@@ -175,7 +188,7 @@ namespace R2S.GUI.Controllers
                 {
                     ViewBag.Error = e.Message + " " + e.GetBaseException().Message;
                     ViewBag.referee_cin = new SelectList(_service.GetMany(), "cin", "firstname");
-                    return View(model);
+                    return View();
                 }
 
 
@@ -200,7 +213,7 @@ namespace R2S.GUI.Controllers
             }
             ViewBag.referee_cin = new SelectList(_service.GetMany(), "cin", "firstname");
 
-            return View(new UsersDetailsViewModel() {User = CurrentUser, NewUser = user});
+            return View(new UsersDetailsViewModel() { User = CurrentUser, NewUser = user });
         }
 
         // POST: users/Edit/5
@@ -236,7 +249,7 @@ namespace R2S.GUI.Controllers
             {
                 return HttpNotFound();
             }
-            return View(new UsersDetailsViewModel() {User = CurrentUser, NewUser = NewUser});
+            return View(new UsersDetailsViewModel() { User = CurrentUser, NewUser = NewUser });
         }
 
         // POST: users/Delete/5

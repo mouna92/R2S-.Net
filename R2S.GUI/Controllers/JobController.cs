@@ -21,6 +21,7 @@ namespace R2S.GUI.Controllers
     {
         private IJobService _jobService = new JobService();
         private ISkillService _skillService = new SkillService();
+        private INotificationService _notificationService = new NotificationService();
 
         public ActionResult Index(int? skillId)
         {
@@ -83,6 +84,22 @@ namespace R2S.GUI.Controllers
             }
 
             return View(new JobViewDetailsModel() { User = CurrentUser, Job = job });
+        }
+
+        public ActionResult SendNotification(int id)
+        {
+
+            notification notification = new notification()
+            {
+                date = DateTime.Now, job_id = id, message = "New Job", recruitmentManager_cin = CurrentUser.Id
+            };
+
+            _notificationService.Add(notification);
+            _notificationService.commit();
+            //job job = _jobService.GetById(id);
+
+            
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

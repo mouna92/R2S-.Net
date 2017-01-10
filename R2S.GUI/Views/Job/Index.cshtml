@@ -81,6 +81,10 @@
                     <a href="@Url.Action("AddReward", "Job", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Add Reward" data-delay="10">
                         <i class='mdi-action-note-add'></i>
                     </a>
+                    <a href="@Url.Action("SendNotification", "Job", new {id = item.id})" class="waves-effect waves-cyan tooltipped" data-position="bottom" data-tooltip="Send Notification" data-delay="10">
+                        <i class='mdi-social-notifications-on'></i>
+                    </a>
+
                 </td>
             </tr>
         }

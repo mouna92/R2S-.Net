@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace R2S.Data.Models
 {
@@ -22,7 +23,7 @@ namespace R2S.Data.Models
             this.referhashes = new List<referhash>();
             this.users1 = new List<user>();
         }
-
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long cin { get; set; }
         public bool active { get; set; }
         public string city { get; set; }
