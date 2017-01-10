@@ -1,0 +1,32 @@
+﻿[
+  {
+    "id": "145789",
+    "firstName": "khalil",
+    "lastName": "khechine",
+    "skills": [ "java", "Asp.net" ]
+  },
+  {
+    "id": "1456789",
+    "firstName": "ahmed",
+    "lastName": "sboui",
+    "skills": [ "web Design","PHP" ]
+  },
+  {
+    "id": "7894566",
+    "firstName": "mhamed",
+    "lastName": "yousfi",
+    "skills": [ "data Entry", "Traduction" ]
+  },
+  {
+    "id": "795647",
+    "firstName": "med amine",
+    "lastName": "belghith",
+    "skills": [ "JEE" ]
+  },
+  {
+    "id": "1456789",
+    "firstName": "bessam",
+    "lastName": "ben tkaya",
+    "skills": [ "JavaScript", "HTML" ]
+  }
+]

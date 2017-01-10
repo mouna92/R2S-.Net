@@ -1,0 +1,51 @@
+﻿@model List<Spring.Social.LinkedIn.Api.LinkedInFullProfile>
+
+@section Styles{
+    <link href="~/Scripts/Materilize/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+}
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User </h2>
+
+<table id="data-table-simple" class="responsive-table display" cellspacing="0">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model=> model.GetEnumerator().Current.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GetEnumerator().Current.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GetEnumerator().Current.Skills)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Skills)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/Materilize/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Materilize/plugins/data-tables/data-tables-script.js"></script>
+
+}
